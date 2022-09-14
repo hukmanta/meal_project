@@ -17,7 +17,7 @@ extension StringExtension on String {
 
   /// digunakan untuk mengkapitalkan string
   String capitalize() {
-    return "${this[0].toUpperCase()}${substring(1)}";
+    return '${this[0].toUpperCase()}${substring(1)}';
   }
 
   /// digunkan untuk menganti @param [substring] terakhir yang ditemukan dan mengantinya dengan @param [replacement]

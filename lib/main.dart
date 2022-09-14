@@ -1,35 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:injectable/injectable.dart';
-import 'package:template_project/flavor_config.dart';
-import 'package:template_project/injection.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:logger/logger.dart';
+import 'package:meal_project/app_module.dart';
+import 'package:meal_project/simple_bloc_delegate.dart';
 
-void main() async{
-    await Hive.initFlutter();
-    FlavorConfig(flavor: Flavor.development, values: FlavorValues(apiUrl: "", apiKey: ""));
-    configureInjection(Environment.dev);
-    BlocOverrides.runZoned(
-          () {
-        runApp(
-          GetMaterialApp(
-            localizationsDelegates: [
-              I10n.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: I10n.delegate.supportedLocales,
-            initialRoute: Routers.main,
-            getPages: Routers().routers,
-            debugShowCheckedModeBanner: false,
-            locale: Locale('id', 'ID'),
-            fallbackLocale: Locale('id', 'ID'),
-          ),
-        );
-        I10n.load(Locale('id', 'ID'));
-      },
-      blocObserver: getIt<SimpleBlocObserver>(),
-    );
+void main() async {
+  // ignore: deprecated_member_use
+  BlocOverrides.runZoned(
+        () {
+      runApp(ModularApp(module: AppModule(), child: const AppWidget()));
+    },
+    blocObserver: SimpleBlocObserver(Logger(filter: DevelopmentFilter(), printer: PrettyPrinter(), output: ConsoleOutput(), level: Level.debug)),
+  );
+}
+
+class AppWidget extends StatelessWidget {
+  const AppWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(title: 'My Meal Apps',
+        theme: ThemeData(primarySwatch: Colors.amber),
+        routeInformationParser: Modular.routeInformationParser,
+        routerDelegate: Modular.routerDelegate);
   }
+}

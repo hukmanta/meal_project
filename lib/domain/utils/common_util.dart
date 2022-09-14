@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:intl/intl.dart';
-import 'package:uuid/uuid.dart';
 
 class CommonUtils {
   /// standar negara untuk menelepon
@@ -29,11 +27,11 @@ class CommonUtils {
     return isContains ? right(true) : left(false);
   }
 
-  /// static function untuk mengkonversi @param [amount] ke dalam format uang
+  /* static function untuk mengkonversi @param [amount] ke dalam format uang
   static String currencyFormat(double amount) {
     NumberFormat format = NumberFormat("#,##0.00", "id_ID");
     return 'Rp. ' + format.format(amount);
-  }
+  }*/
 
   /// static function untuk mendapatkan inital awal dari string @param [value]
   static Either<String, String> getInitials(String value) {
@@ -47,12 +45,6 @@ class CommonUtils {
           .toUpperCase());
     }
     return left('');
-  }
-
-  /// static function untuk mendapatkan Universal Unique ID
-  static String getUUID() {
-    var uuid = const Uuid();
-    return uuid.v1();
   }
 
   /// static function untuk mendapatkan penjelasan string dari @param [type]
@@ -77,10 +69,10 @@ class CommonUtils {
 
   /// static function untuk menghasilkan string random alpanumerik dengan panjang @param [length]
   static String getRandomString(int length) {
-    const _chars =
+    const chars =
         'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-    Random _rnd = Random();
+    Random rnd = Random();
     return String.fromCharCodes(Iterable.generate(
-        length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+        length, (_) => chars.codeUnitAt(rnd.nextInt(chars.length))));
   }
 }

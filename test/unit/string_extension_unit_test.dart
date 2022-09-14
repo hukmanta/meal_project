@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:template_project/domain/extension/string_extension.dart';
+import 'package:meal_project/domain/extension/string_extension.dart';
 
   void main(){
     //Define Test
-    group("String extension test", (){
-      test("test capitalize", (){
+    group('String extension test', (){
+      test('test capitalize', (){
         // Arrange
         var expected = 'Hukman';
         var sample = 'hukman';
@@ -14,28 +14,28 @@ import 'package:template_project/domain/extension/string_extension.dart';
         expect(actual,expected);
       });
 
-      test("replace last test",(){
+      test('replace last test',(){
         var expected = 'hukman thayib';
         var sample = 'hukmanx';
         var actual = sample.replaceLast('x', ' thayib');
         expect(actual, expected);
       });
 
-      test("validateEmail test",(){
+      test('validateEmail test',(){
         var expected = true;
         var sample = 'hukmanta@gmail.com';
         var actual = sample.validateEmail();
         expect(actual, expected);
       });
 
-      test("validatePassword test",(){
+      test('validatePassword test',(){
         var expected = true;
         var sample = '21Jan1991';
         var actual = sample.validatePassword();
         expect(actual, expected);
       });
 
-      test("validatePhone test",(){
+      test('validatePhone test',(){
         var expected = true;
         var sample = '089668239376';
         var actual = sample.validatePhone();

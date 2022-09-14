@@ -1,13 +1,11 @@
-import 'package:intl/intl.dart';
-
 ///import file [StringExtension] agar dapat menggunakan code ini
 extension DateTimeExtension on DateTime{
 
-  /// mencetak Datetime sesuai @param [pattern] yang ditentukan dan @param [locale] sebagai standar lokal yg dipakai
+  /* mencetak Datetime sesuai @param [pattern] yang ditentukan dan @param [locale] sebagai standar lokal yg dipakai
   String printByPattern({String pattern="dd MMM yyyy - HH:mm", String locale='id'}){
     DateFormat dateFormat = DateFormat(pattern, locale);
     return  dateFormat.format(toLocal());
-  }
+  }*/
 
   /// mengubah tanggal ke hari pertama dalam satu minggu
   DateTime toFirstDateOfWeek() {

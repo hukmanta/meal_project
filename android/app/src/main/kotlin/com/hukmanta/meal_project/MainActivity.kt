@@ -1,4 +1,4 @@
-package com.hukmanta.template_project
+package com.hukmanta.meal_project
 
 import io.flutter.embedding.android.FlutterActivity
 

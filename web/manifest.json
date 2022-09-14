@@ -1,6 +1,6 @@
 {
-    "name": "template_project",
-    "short_name": "template_project",
+    "name": "meal_project",
+    "short_name": "meal_project",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
